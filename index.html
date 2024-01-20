@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Library</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            text-align: center;
+            animation: gradientAnimation 0.3s infinite linear;
+            align-items: center;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        header {
+            background-color: linear-gradient(to right, #ecf0f1, #bdc3c7);
+            color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: linear-gradient(to right, #ecf0f1, #bdc3c7);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: box-shadow 0.03s ease-in-out, background 0.03s ease-in-out;
+        }
+
+        li:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #e74c3c, #e67e22);
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 14px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Io e L'Altro</h1>
+    </header>
+
+    <main id="playlist-section"></main>
+
+    <footer>
+        <p>&copy; 2M Liceo Da Vinci Trento</p>
+    </footer>
+
+    <script>
+        const files = [
+		    { name: 'Intro.mp3', image: 'intro.png' },
+            { name: 'Avere Cura Dell Inclusione.mp3', image: 'copertina 1.png' },
+            { name: 'I Valori Dell Immigrazione.mp3', image: 'copertina 2.jpeg' },
+            { name: 'Il Sé.mp3', image: 'copertina 3.jpg' },
+			{ name: 'Outro.mp3', image: 'Outro.png' }
+			
+            // Aggiungi altri file qui
+        ];
+
+        const playlist = document.getElementById('playlist-section');
+
+        files.forEach(file => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <audio controls>
+                    <source src="${file.name}" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <span>${file.name}</span>
+                <img src="${file.image}" alt="Image">
+            `;
+            playlist.appendChild(listItem);
+        });
+    </script>
+
+</body>
+</html>
